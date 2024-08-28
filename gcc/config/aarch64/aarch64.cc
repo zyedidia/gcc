@@ -7808,6 +7808,8 @@ aarch64_layout_frame (void)
     if (df_regs_ever_live_p (regno)
 	&& !fixed_regs[regno]
 	&& (regno == R30_REGNUM
+	    || !fixed_regs[regno])
+	&& (regno == R30_REGNUM
 	    || !crtl->abi->clobbers_full_reg_p (regno)))
       frame.reg_offset[regno] = SLOT_REQUIRED;
 
@@ -13148,12 +13150,12 @@ aarch64_output_casesi (rtx *operands)
   static const char *const patterns[4][2] =
   {
     {
-      "ldrb\t%w3, [%0,%w1,uxtw]",
-      "add\t%3, %4, %w3, sxtb #2"
+      "ldr\t%w3, [%0,%w1,uxtw #2]",
+      "add\t%3, %4, %w3, sxtw #2"
     },
     {
-      "ldrh\t%w3, [%0,%w1,uxtw #1]",
-      "add\t%3, %4, %w3, sxth #2"
+      "ldr\t%w3, [%0,%w1,uxtw #2]",
+      "add\t%3, %4, %w3, sxtw #2"
     },
     {
       "ldr\t%w3, [%0,%w1,uxtw #2]",
