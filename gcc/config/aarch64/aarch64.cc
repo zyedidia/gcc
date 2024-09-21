@@ -7806,7 +7806,6 @@ aarch64_layout_frame (void)
   /* ... and any callee saved register that dataflow says is live.  */
   for (regno = R0_REGNUM; regno <= R30_REGNUM; regno++)
     if (df_regs_ever_live_p (regno)
-	&& !fixed_regs[regno]
 	&& (regno == R30_REGNUM
 	    || !fixed_regs[regno])
 	&& (regno == R30_REGNUM

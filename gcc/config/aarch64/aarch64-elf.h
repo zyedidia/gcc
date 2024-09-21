@@ -75,6 +75,7 @@
     switch (GET_MODE (BODY))						\
       {									\
       case E_SImode:							\
+      case E_HImode:							\
       case E_DImode: /* See comment in aarch64_output_casesi.  */		\
 	asm_fprintf (STREAM, "\t.word\t(%LL%d - %LLrtx%d) / 4\n",	\
 		     VALUE, REL);					\
