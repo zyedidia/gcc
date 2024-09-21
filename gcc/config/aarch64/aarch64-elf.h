@@ -74,6 +74,7 @@
   do {									\
     switch (GET_MODE (BODY))						\
       {									\
+      case E_QImode:							\
       case E_SImode:							\
       case E_HImode:							\
       case E_DImode: /* See comment in aarch64_output_casesi.  */		\
